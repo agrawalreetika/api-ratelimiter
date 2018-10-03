@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="db-service/src/main/java"/>
+	<classpathentry kind="src" path="db-service/src/test/java"/>
+	<classpathentry kind="src" path="limiter/src/main/java"/>
+	<classpathentry kind="src" path="limiter/src/test/java"/>
+	<classpathentry kind="lib" path="db-service/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="lib" path="limiter/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="limiter/target/classes"/>
+</classpath>
