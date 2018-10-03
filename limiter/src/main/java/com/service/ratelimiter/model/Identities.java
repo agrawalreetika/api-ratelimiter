@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Identities {
-	Map requests;
+	Map<Identity, List<Long>> requests;
 	public Identities(){
 		requests = new HashMap<Identity,List<Long>>();
 	}
