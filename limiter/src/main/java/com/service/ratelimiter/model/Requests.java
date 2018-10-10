@@ -1,13 +1,20 @@
 package com.service.ratelimiter.model;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class Identities {
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class Requests {
+	
+	@Autowired
+	ApiLimits limits;
+	
 	Map<Identity, List<Long>> requests;
-	public Identities(){
+	public Requests(){
 		requests = new HashMap<Identity,List<Long>>();
 	}
 	
@@ -15,7 +22,7 @@ public class Identities {
 		int urlcountThresold = 0;
 		long timeThresold = 0;
 		
-		List<Long> timeStampList = (List<Long>) requests.get(req);
+		List<Long> timeStampList = requests.get(req);
 		List<Long> updatedtimeStampList = new LinkedList<Long>();
 		
 //		for(int i=0;i<timeStampList.size();i++){
@@ -51,5 +58,16 @@ public class Identities {
 		else{
 			clearRequest(req,timestamp);
 		}
+	}
+	
+	public boolean IsValid(Identity idt, Long timestamp) {
+		int limit = limits.GetLimit(idt.getApiUri());
+		
+		if(requests.get(idt).size() < limit) {
+			this.addRequest(idt, timestamp);
+			return true;
+		}
+		return false;
+		
 	}
 }
