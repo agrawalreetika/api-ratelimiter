@@ -6,5 +6,6 @@ import org.springframework.data.repository.query.Param;
 import com.service.dbservice.tables.UrlsList;
 
 public interface AllUrlRepository extends JpaRepository<UrlsList, String> {
+	
 	UrlsList findUrlRow(@Param(value = "api") String limitUrl);
 }
